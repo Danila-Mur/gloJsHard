@@ -1,19 +1,48 @@
-const num = 266219;
-let numStr = String(num).split('');
+let lang = 'ru';
+const rusDayOfWeek = [
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятницу',
+  'Суббота',
+  'Воскресенье',
+];
+const enDayOfWeek = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+const allDayOfWeek = [rusDayOfWeek, enDayOfWeek];
+console.log('allDayOfWeek: ', allDayOfWeek);
 
-console.log(numStr);
-let mult = 1;
-
-for (let i = 0; i <= numStr.length - 1; i++) {
-  mult *= +numStr[i];
+// if
+if (lang === 'ru') {
+  console.log(rusDayOfWeek);
+} else if (lang === 'en') {
+  console.log(enDayOfWeek);
 }
-// or
-const multNum = numStr.reduce(
-  (previousValue, currentValue) => previousValue * currentValue
-);
+// switch
+switch (lang) {
+  case 'ru':
+    console.log(rusDayOfWeek);
+    break;
+  case 'en':
+    console.log(enDayOfWeek);
+    break;
+}
+//
+lang === 'ru'
+  ? console.log(allDayOfWeek[0])
+  : console.log(allDayOfWeek[1]);
 
-console.log('mult', mult);
-console.log('multNum: ', multNum);
+let namePerson = 'Александр';
 
-let pow = multNum ** 3;
-console.log('pow: ', String(pow).substring(0, 2));
+namePerson === 'Артём' ? console.log('директор') : console.log('студент');
+namePerson === 'Александр'
+  ? console.log('преподаватель')
+  : console.log('студент');
