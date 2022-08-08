@@ -17,18 +17,11 @@ for (let key of week) {
     weekday: 'long',
   });
   weekItem.forEach((item) => {
-    switch (true) {
-      case item.textContent === 'Saturday' || item.textContent === 'Sunday':
-        item.style.fontStyle = 'italic';
-        return;
-      case dayOfWeekName === item.textContent:
-        item.style.fontWeight = 'bold';
-        return;
-      case (item.textContent === 'Saturday' || item.textContent === 'Sunday') &&
-        dayOfWeekName === item.textContent:
-        item.style.fontStyle = 'italic';
-        item.style.fontWeight = 'bold';
-        return;
+    if (item.textContent === 'Saturday' || item.textContent === 'Sunday') {
+      item.style.fontStyle = 'italic';
+    }
+    if (dayOfWeekName === item.textContent) {
+      item.style.fontWeight = 'bold';
     }
   });
 }
