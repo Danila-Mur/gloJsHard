@@ -31,6 +31,10 @@ const getMonth = (date) => {
   return days[date.getMonth()];
 };
 
+const formatDate = (elem) => {
+  return elem < 10 ? '0' + elem : elem;
+};
+
 const timer = () => {
   const fullBlock = document.querySelector('.full-display__timer');
   const shortBlock = document.querySelector('.short-display__timer');
@@ -59,45 +63,39 @@ const timer = () => {
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
 
-    const formatDay = day < 10 ? '0' + day : day;
-    const formatMonth = shortMonth < 10 ? '0' + shortMonth : shortMonth;
-    const formatHours = hour < 10 ? '0' + hour : hour;
-    const formatMinutes = minutes < 10 ? '0' + minutes : minutes;
-    const formatSeconds = seconds < 10 ? '0' + seconds : seconds;
-
     fullBlock.textContent =
       'Сегодня ' +
       dayOfWeek +
       ', ' +
-      formatDay +
+      formatDate(day) +
       ' ' +
       month +
       ' ' +
       year +
       ' года , ' +
-      formatHours +
+      formatDate(hour) +
       ' ' +
       numWord(hour, ['час', 'часа', 'часов']) +
       ' ' +
-      formatMinutes +
+      formatDate(minutes) +
       ' ' +
       numWord(minutes, ['минута', 'минуты', 'минут']) +
       ' ' +
-      formatSeconds +
+      formatDate(seconds) +
       ' ' +
       numWord(seconds, ['секунда', 'секунды', 'секунд']);
     shortBlock.textContent =
-      formatDay +
+      formatDate(day) +
       '.' +
-      formatMonth +
+      formatDate(shortMonth) +
       '.' +
       year +
       ' - ' +
-      formatHours +
+      formatDate(hour) +
       ':' +
-      formatMinutes +
+      formatDate(minutes) +
       ':' +
-      formatSeconds;
+      formatDate(seconds);
   };
   updateTimer();
   interval = setInterval(updateTimer, 500);
